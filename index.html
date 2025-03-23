@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高品质音频转换器</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&display=swap">
+</head>
+<body>
+    <div class="container">
+    <header>
+            <h1>音频转换器</h1>
+            <p class="subtitle">MP3 转 WAV 高品质音频</p>
+    </header>
+
+        <div class="converter-container">
+            <div class="upload-area" id="dropArea">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/free-apple-music-1855092-1569516.png" alt="音乐图标" class="music-icon">
+                <p>拖放 MP3 文件到这里</p>
+                <p>或</p>
+                <label for="fileInput" class="upload-button">选择文件</label>
+                <input type="file" id="fileInput" accept=".mp3" hidden>
+                <p id="fileName" class="file-name"></p>
+            </div>
+
+            <div class="settings-panel">
+                <h2>转换设置</h2>
+                        
+                        <div class="setting-group">
+                    <label>采样率</label>
+                    <div class="radio-group">
+                        <label class="radio-button">
+                            <input type="radio" name="sampleRate" value="44100" checked>
+                            <span>44.1 kHz</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="sampleRate" value="48000">
+                            <span>48 kHz</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="sampleRate" value="96000">
+                            <span>96 kHz</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="sampleRate" value="192000">
+                            <span>192 kHz</span>
+                        </label>
+                        </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                    <label>位深度</label>
+                    <div class="radio-group">
+                        <label class="radio-button">
+                            <input type="radio" name="bitDepth" value="16" checked>
+                            <span>16 位</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="bitDepth" value="24">
+                            <span>24 位</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="bitDepth" value="32">
+                            <span>32 位浮点</span>
+                        </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                    <label>声道</label>
+                    <div class="radio-group">
+                        <label class="radio-button">
+                            <input type="radio" name="channels" value="1">
+                            <span>单声道</span>
+                        </label>
+                        <label class="radio-button">
+                            <input type="radio" name="channels" value="2" checked>
+                            <span>立体声</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>动态范围压缩</label>
+                    <div class="slider-container">
+                        <input type="range" id="dynamicRange" min="0" max="100" value="0" class="slider">
+                        <span id="dynamicRangeValue">0%</span>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>抖动</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="dithering" class="toggle-input">
+                        <label for="dithering" class="toggle-label"></label>
+                    </div>
+                        </div>
+                        
+                        <div class="setting-group">
+                    <label>降噪</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="noiseReduction" class="toggle-input">
+                        <label for="noiseReduction" class="toggle-label"></label>
+                    </div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                <button id="convertButton" class="primary-button" disabled>转换</button>
+                <button id="resetButton" class="secondary-button">重置</button>
+            </div>
+
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar" id="progressBar"></div>
+                <p id="progressText">处理中... 0%</p>
+            </div>
+
+            <div class="result-container" id="resultContainer" style="display: none;">
+                <h3>转换完成</h3>
+                <div class="file-info">
+                    <div class="file-info-item">
+                        <span>文件名:</span>
+                        <span id="resultFileName"></span>
+                    </div>
+                    <div class="file-info-item">
+                        <span>文件大小:</span>
+                        <span id="resultFileSize"></span>
+                    </div>
+                    <div class="file-info-item">
+                        <span>音频信息:</span>
+                        <span id="resultAudioInfo"></span>
+                    </div>
+                </div>
+                <audio id="audioPreview" controls></audio>
+                <button id="downloadButton" class="primary-button">下载 WAV 文件</button>
+                        </div>
+                    </div>
+                    
+        <footer>
+            <p>© 2025 高品质音频转换器 - 使用 Web Audio API 开发</p>
+        </footer>
+                    </div>
+    <script src="script.js"></script>
+</body>
+</html>

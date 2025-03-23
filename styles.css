@@ -1,0 +1,367 @@
+:root {
+    --apple-blue: #007aff;
+    --apple-blue-dark: #0062cc;
+    --apple-gray: #f5f5f7;
+    --apple-text: #1d1d1f;
+    --apple-text-secondary: #86868b;
+    --apple-border: #d2d2d7;
+    --apple-success: #34c759;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    color: var(--apple-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #007aff, #5ac8fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: var(--apple-text-secondary);
+    font-weight: 400;
+}
+
+.converter-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.upload-area {
+    border: 2px dashed var(--apple-border);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    background-color: var(--apple-gray);
+}
+
+.upload-area.active {
+    border-color: var(--apple-blue);
+    background-color: rgba(0, 122, 255, 0.05);
+}
+
+.music-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.upload-button {
+    display: inline-block;
+    background-color: var(--apple-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.upload-button:hover {
+    background-color: var(--apple-blue-dark);
+}
+
+.file-name {
+    margin-top: 15px;
+    font-weight: 500;
+    color: var(--apple-blue);
+}
+
+.settings-panel {
+    margin-bottom: 30px;
+}
+
+.settings-panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.setting-group {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.setting-group label {
+    min-width: 120px;
+    font-weight: 500;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--apple-gray);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.radio-button:hover {
+    background-color: #e9e9eb;
+}
+
+.radio-button input {
+    display: none;
+}
+
+.radio-button input:checked + span {
+    color: var(--apple-blue);
+    font-weight: 500;
+}
+
+.radio-button span {
+    margin-left: 5px;
+}
+
+.radio-button input:checked + span::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--apple-blue);
+    margin-left: 5px;
+}
+
+.slider-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: #e9e9eb;
+    border-radius: 2px;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--apple-blue);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e9e9eb;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: var(--apple-blue);
+}
+
+.toggle-input:checked + .toggle-label:before {
+    transform: translateX(26px);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.primary-button, .secondary-button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.primary-button {
+    background-color: var(--apple-blue);
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: var(--apple-blue-dark);
+}
+
+.primary-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.secondary-button {
+    background-color: var(--apple-gray);
+    color: var(--apple-text);
+}
+
+.secondary-button:hover {
+    background-color: #e9e9eb;
+}
+
+.progress-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #e9e9eb;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: var(--apple-blue);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+#progressText {
+    text-align: center;
+    color: var(--apple-text-secondary);
+}
+
+.result-container {
+    background-color: var(--apple-gray);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.result-container h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: var(--apple-success);
+}
+
+.file-info {
+    margin-bottom: 20px;
+}
+
+.file-info-item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.file-info-item span:first-child {
+    min-width: 100px;
+    font-weight: 500;
+}
+
+audio {
+    width: 100%;
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--apple-text-secondary);
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    .setting-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .setting-group label {
+        margin-bottom: 10px;
+    }
+    
+    .radio-group {
+        width: 100%;
+    }
+} 
